@@ -1,197 +1,252 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BSMP TIENDA</title>
-    <link rel="icon" type="image/png" href="/favicon.png" />
 
-    <!-- Fuente secundaria (Poppins) -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BSMP TIENDA</title>
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <meta name="theme-color" content="#000" />
 
-    <style>
-      /* Fuente personalizada Minecraftly */
-      @font-face {
-  font-family: 'Minecraftly';
-  src: url('https://raw.githubusercontent.com/brauustudios/bsmp-shop/main/Minercraftory.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
+  <!-- Fuente secundaria (Poppins) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
 
+  <style>
+    /* Fuente personalizada Minecraftly */
+    @font-face {
+      font-family: 'Minecraftly';
+      src: url('https://raw.githubusercontent.com/brauustudios/bsmp-shop/main/Minercraftory.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
 
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-      html, body {
-        height: 100%;
-      }
+    html,
+    body {
+      height: 100%;
+    }
 
-      body {
-        font-family: 'Poppins', sans-serif;
-        background: #111;
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-      }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #111;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+    }
 
-      header {
-        background-color: #000;
-        padding: 20px;
-        text-align: center;
-        border-bottom: 1px solid #333;
-      }
+    header {
+      background-color: #000;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid #333;
+    }
 
+    .logo-text {
+      font-family: 'Minecraftly', sans-serif;
+      font-size: 3rem;
+      color: white;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    /* Reducción del tamaño del logo en pantallas pequeñas */
+    @media (max-width: 768px) {
       .logo-text {
-        font-family: 'Minecraftly', sans-serif;
-        font-size: 3rem;
-        color: white;
-        animation: fadeIn 2s ease-in-out;
+        font-size: 2rem;
+      }
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 20px;
+      background: radial-gradient(circle at center, #1f1f1f 0%, #111 100%);
+      animation: fadeIn 2s ease-in-out;
+      text-align: center;
+      animation: slideUp 1s ease-out forwards;
+    }
+
+    h2 {
+      font-family: 'Minecraftly', sans-serif;
+      font-size: 3rem;
+      /* Aumenté el tamaño para que sea más grande */
+      margin-bottom: 20px;
+      color: #fff;
+      animation: slideDown 1s ease-out forwards, textAnimation 2s ease-in-out;
+    }
+
+    /* Animación para el texto de "MERCH PRONTO..." */
+    @keyframes textAnimation {
+      0% {
+        opacity: 0;
+        transform: translateY(-30px);
       }
 
-      /* Reducción del tamaño del logo en pantallas pequeñas */
-      @media (max-width: 768px) {
-        .logo-text {
-          font-size: 2rem;
-        }
+      50% {
+        opacity: 1;
+        transform: translateY(0);
       }
 
-      main {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 80px 20px;
-        background: radial-gradient(circle at center, #1f1f1f 0%, #111 100%);
-        animation: fadeIn 2s ease-in-out;
-        text-align: center;
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    p {
+      font-size: 1.5rem;
+      /* Aumenté el tamaño para mayor visibilidad */
+      color: #ccc;
+      margin-bottom: 30px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .button {
+      background-color: #fff;
+      /* Cambié el color de fondo a blanco */
+      color: #111;
+      /* Cambié el color del texto a oscuro */
+      padding: 14px 30px;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Minecraftly', sans-serif;
+      /* Apliqué la misma fuente de Minecraftly */
+      font-size: 1.2rem;
+      /* Ajusté el tamaño de la fuente */
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      animation: buttonFadeIn 2s ease-in-out;
+    }
+
+    .button:hover {
+      background-color: #e0e0e0;
+      /* Color gris claro en hover */
+    }
+
+    @keyframes slideDown {
+      0% {
+        transform: translateY(-50px);
+        opacity: 0;
       }
 
-      h2 {
-        font-family: 'Minecraftly', sans-serif;
-        font-size: 2.4rem; /* Ajusté el tamaño para hacerlo más pequeño */
-        margin-bottom: 20px;
-        color: #fff;
-        animation: slideDown 1s ease-out forwards, textAnimation 2s ease-in-out;
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
       }
 
-      /* Animación para el texto de "MERCH PRONTO..." */
-      @keyframes textAnimation {
-        0% { opacity: 0; transform: translateY(-30px); }
-        50% { opacity: 1; transform: translateY(0); }
-        100% { opacity: 1; transform: translateY(0); }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes buttonFadeIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
       }
 
-      p {
-        font-size: 1.3rem;
-        color: #ccc;
-        margin-bottom: 30px;
-        animation: fadeIn 2s ease-in-out;
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes slideUp {
+      0% {
+        transform: translateY(50px);
+        opacity: 0;
       }
 
-      .button {
-        background-color: #fff; /* Cambié el color de fondo a blanco */
-        color: #111; /* Cambié el color del texto a oscuro */
-        padding: 14px 30px;
-        border: none;
-        border-radius: 10px;
-        font-size: 1rem;
-        cursor: pointer;
-        text-decoration: none;
-        transition: background-color 0.3s ease;
-        animation: buttonFadeIn 2s ease-in-out;
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    footer {
+      background-color: #000;
+      padding: 20px;
+      text-align: center;
+      color: #aaa;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      left: 0;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #e0e0e0;
+      animation: footerLinkHover 0.3s ease-out forwards;
+    }
+
+    .copyright {
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    /* Mejorar animaciones para los enlaces en el footer */
+    @keyframes footerLinkHover {
+      0% {
+        transform: scale(1);
+        opacity: 1;
       }
 
-      .button:hover {
-        background-color: #e0e0e0; /* Color gris claro en hover */
+      100% {
+        transform: scale(1.1);
+        opacity: 1;
       }
+    }
+  </style>
+</head>
 
-      @keyframes slideDown {
-        0% { transform: translateY(-50px); opacity: 0; }
-        100% { transform: translateY(0); opacity: 1; }
-      }
+<body>
+  <header>
+    <div class="logo-text">Bsmp.store</div>
+  </header>
 
-      @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
+  <main>
+    <h2>Merch pronto...</h2>
+    <p>MAYO 2025</p>
+    <a href="https://www.twitch.tv/brauliomaroto" class="button">Mi Twitch</a>
+  </main>
 
-      @keyframes buttonFadeIn {
-        0% { opacity: 0; transform: scale(0.8); }
-        100% { opacity: 1; transform: scale(1); }
-      }
+  <footer>
+    <div class="footer-links">
+      <a href="/">Inicio</a>
+    </div>
+    <div class="copyright">
+      &copy; 2025 BSMP
+    </div>
+  </footer>
+</body>
 
-      footer {
-        background-color: #000;
-        padding: 20px;
-        text-align: center;
-        color: #aaa;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        left: 0;
-      }
-
-      .footer-links {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        margin-bottom: 20px;
-        flex-wrap: wrap;
-      }
-
-      .footer-links a {
-        color: #fff; /* Cambié el color de los enlaces a blanco */
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.3s ease;
-      }
-
-      .footer-links a:hover {
-        color: #e0e0e0; /* Color gris claro al hacer hover */
-      }
-
-      .copyright {
-        font-size: 0.9rem;
-        color: #777;
-      }
-
-      /* Mejorar animaciones para los enlaces en el footer */
-      @keyframes footerLinkHover {
-        0% { transform: scale(1); opacity: 1; }
-        100% { transform: scale(1.1); opacity: 1; }
-      }
-
-      .footer-links a:hover {
-        animation: footerLinkHover 0.3s ease-out forwards;
-      }
-
-    </style>
-  </head>
-
-  <body>
-    <header>
-      <div class="logo-text">Bsmp.store</div>
-    </header>
-
-    <main>
-      <h2>Merch pronto...</h2>
-      <p>MAYO 2025</p>
-      <a href="https://www.twitch.tv/brauliomaroto" class="button">Mi Twitch</a>
-    </main>
-
-    <footer>
-      <div class="footer-links">
-        <a href="/">Inicio</a>
-        
-      
-      </div>
-      <div class="copyright">
-        &copy; 2025 <a ">BSMP</a>
-      </div>
-    </footer>
-  </body>
 </html>
