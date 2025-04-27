@@ -7,17 +7,12 @@
   <title>BSMP TIENDA</title>
   <link rel="icon" type="image/png" href="/favi.png" />
   <meta name="theme-color" content="#000" />
-
-  <!-- Fuente secundaria (Poppins) -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
 
   <style>
-    /* Fuente personalizada Minecraftly */
     @font-face {
       font-family: 'Minecraftly';
       src: url('https://raw.githubusercontent.com/brauustudios/bsmp-shop/main/Minercraftory.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
     }
 
     * {
@@ -26,17 +21,13 @@
       padding: 0;
     }
 
-    html,
-    body {
+    body, html {
       height: 100%;
-    }
-
-    body {
+      display: flex;
+      flex-direction: column;
       font-family: 'Poppins', sans-serif;
       background: #111;
       color: #fff;
-      display: flex;
-      flex-direction: column;
     }
 
     header {
@@ -50,14 +41,7 @@
       font-family: 'Minecraftly', sans-serif;
       font-size: 3rem;
       color: white;
-      animation: fadeIn 2s ease-in-out;
-    }
-
-    /* Reducción del tamaño del logo en pantallas pequeñas */
-    @media (max-width: 768px) {
-      .logo-text {
-        font-size: 2rem;
-      }
+      text-decoration: none;
     }
 
     main {
@@ -68,112 +52,73 @@
       justify-content: center;
       padding: 80px 20px;
       background: radial-gradient(circle at center, #1f1f1f 0%, #111 100%);
-      animation: fadeIn 2s ease-in-out;
       text-align: center;
-      animation: slideUp 1s ease-out forwards;
     }
 
     h2 {
       font-family: 'Minecraftly', sans-serif;
       font-size: 3rem;
-      /* Aumenté el tamaño para que sea más grande */
       margin-bottom: 20px;
-      color: #fff;
-      animation: slideDown 1s ease-out forwards, textAnimation 2s ease-in-out;
-    }
-
-    /* Animación para el texto de "MERCH PRONTO..." */
-    @keyframes textAnimation {
-      0% {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-
-      50% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
     p {
       font-size: 1.5rem;
-      /* Aumenté el tamaño para mayor visibilidad */
       color: #ccc;
       margin-bottom: 30px;
-      animation: fadeIn 2s ease-in-out;
     }
 
     .button {
       background-color: #fff;
-      /* Cambié el color de fondo a blanco */
       color: #111;
-      /* Cambié el color del texto a oscuro */
       padding: 14px 30px;
       border: none;
       border-radius: 10px;
       font-family: 'Minecraftly', sans-serif;
-      /* Apliqué la misma fuente de Minecraftly */
       font-size: 1.2rem;
-      /* Ajusté el tamaño de la fuente */
       cursor: pointer;
       text-decoration: none;
       transition: background-color 0.3s ease;
-      animation: buttonFadeIn 2s ease-in-out;
+      display: inline-block;
+      margin: 10px 0;
     }
 
     .button:hover {
       background-color: #e0e0e0;
-      /* Color gris claro en hover */
     }
 
-    @keyframes slideDown {
-      0% {
-        transform: translateY(-50px);
-        opacity: 0;
-      }
+    #trailer-container {
+      display: none;
+      position: fixed;
+      top: 140px;
+      left: 40%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      width: 70%;
+      max-width: 400px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      text-align: center;
+      z-index: 10;
+      animation: fadeIn 1s ease forwards;
+    }
 
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
+    video {
+      border-radius: 5px;
+      width: 100%;
+      max-width: 300px; /* Ajustado a un tamaño más pequeño */
+      height: auto;
     }
 
     @keyframes fadeIn {
       from {
         opacity: 0;
+        transform: scale(0.95);
       }
 
       to {
         opacity: 1;
-      }
-    }
-
-    @keyframes buttonFadeIn {
-      0% {
-        opacity: 0;
-        transform: scale(0.8);
-      }
-
-      100% {
-        opacity: 1;
         transform: scale(1);
-      }
-    }
-
-    @keyframes slideUp {
-      0% {
-        transform: translateY(50px);
-        opacity: 0;
-      }
-
-      100% {
-        transform: translateY(0);
-        opacity: 1;
       }
     }
 
@@ -192,62 +137,119 @@
       display: flex;
       justify-content: center;
       gap: 30px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
+      margin-bottom: 10px;
     }
 
     .footer-links a {
       color: #fff;
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.3s ease;
     }
 
     .footer-links a:hover {
       color: #e0e0e0;
-      animation: footerLinkHover 0.3s ease-out forwards;
     }
 
-    .copyright {
-      font-size: 0.9rem;
-      color: #777;
+    #toggleBtn {
+      font-size: 1rem;
+      padding: 10px 20px;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-family: 'Minecraftly', sans-serif;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
     }
 
-    /* Mejorar animaciones para los enlaces en el footer */
-    @keyframes footerLinkHover {
-      0% {
-        transform: scale(1);
-        opacity: 1;
-      }
-
-      100% {
-        transform: scale(1.1);
-        opacity: 1;
-      }
+    #toggleBtn:hover {
+      background-color: #444;
     }
+
+   /* Responsive ajustes para móviles */
+@media (max-width: 600px) {
+  video {
+    width: 100%;
+    max-width: 280px; /* Video más pequeño en móviles */
+  }
+
+  #trailer-container {
+    width: 60%;
+    max-width: 280px;
+    top: 160px; /* Mueve el video más arriba en la pantalla */
+    left: 20.5%; /* Centra el contenedor horizontalmente */
+    transform: translateX(-50%); /* Ajuste para centrar el contenedor perfectamente */
+  }
+
+  .button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
   </style>
 </head>
 
 <body>
   <header>
-    <a href="/" class="logo-text" style="text-decoration: none; color: white;">Bsmp.store</a>
+    <a href="/" class="logo-text">Bsmp.store</a>
   </header>
-  
 
   <main>
     <h2>Merch pronto...</h2>
     <p>MAYO 2025</p>
-    <a href="https://www.twitch.tv/brauliomaroto" class="button">Mi Twitch</a>
+
+    <a href="https://www.twitch.tv/brauliomaroto" class="button" target="_blank">Mi Twitch</a>
+
+    <!-- Video encima de "Merch pronto" -->
+    <div id="trailer-container">
+      <video id="trailerVideo" autoplay playsinline muted>
+        <source src="click.mp4" type="video/mp4" />
+        Tu navegador no soporta el video.
+      </video>
+    </div>
   </main>
 
   <footer>
     <div class="footer-links">
       <a href="/">Inicio</a>
     </div>
-    <div class="copyright">
-      &copy; 2025 BSMP
-    </div>
+    <div>&copy; 2025 BSMP</div>
+    <button id="toggleBtn" onclick="toggleTrailer()">Ver trailer</button>
   </footer>
+
+  <script>
+    let abierto = false;
+
+    function toggleTrailer() {
+      const trailerContainer = document.getElementById("trailer-container");
+      const trailerVideo = document.getElementById("trailerVideo");
+      const toggleBtn = document.getElementById("toggleBtn");
+
+      if (!abierto) {
+        trailerContainer.style.display = "block";
+        trailerVideo.currentTime = 0;
+        trailerVideo.play();
+        toggleBtn.textContent = "Cerrar trailer";
+        trailerContainer.scrollIntoView({ behavior: "smooth" });
+      } else {
+        trailerVideo.pause();
+        trailerContainer.style.display = "none";
+        toggleBtn.textContent = "Ver trailer";
+      }
+
+      abierto = !abierto;
+    }
+  </script>
 </body>
 
 </html>
