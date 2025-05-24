@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,7 +9,6 @@
   <meta name="theme-color" content="#000" />
   <meta name="description" content="BSMP será una tienda para creadores de contenido, donde habrá merchandising, información y contenido exclusivo. Lanzamiento en mayo de 2025.">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-
   <style>
     @font-face {
       font-family: 'Minecraftly';
@@ -74,6 +72,14 @@
       animation: fadeIn 2s ease-in-out;
     }
 
+    #countdown {
+      font-family: 'Minecraftly', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #fff;
+      animation: fadeIn 2s ease-in-out;
+    }
+
     .button {
       background-color: #fff;
       color: #111;
@@ -92,95 +98,6 @@
 
     .button:hover {
       background-color: #e0e0e0;
-    }
-
-    #trailer-container {
-      display: none;
-      position: fixed;
-      top: 140px;
-      left: 40%;
-      transform: translateX(-50%);
-      background: rgba(0, 0, 0, 0.8);
-      padding: 20px;
-      border-radius: 10px;
-      width: 70%;
-      max-width: 400px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-      text-align: center;
-      z-index: 10;
-      animation: fadeIn 1s ease forwards;
-    }
-
-    video {
-      border-radius: 5px;
-      width: 100%;
-      max-width: 300px;
-      height: auto;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: scale(0.95);
-      }
-
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    @keyframes slideDown {
-      0% {
-        transform: translateY(-50px);
-        opacity: 0;
-      }
-
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    @keyframes slideUp {
-      0% {
-        transform: translateY(50px);
-        opacity: 0;
-      }
-
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    @keyframes textAnimation {
-      0% {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-
-      50% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes buttonFadeIn {
-      0% {
-        opacity: 0;
-        transform: scale(0.8);
-      }
-
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
     }
 
     footer {
@@ -212,38 +129,35 @@
       color: #e0e0e0;
     }
 
-    #toggleBtn {
-      font-size: 1rem;
-      padding: 10px 20px;
-      background-color: #000;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      font-family: 'Minecraftly', sans-serif;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
+    /* Animaciones */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
 
-    #toggleBtn:hover {
-      background-color: #444;
+    @keyframes slideDown {
+      0% { transform: translateY(-50px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
     }
 
-    /* Responsive ajustes para móviles */
+    @keyframes slideUp {
+      0% { transform: translateY(50px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes textAnimation {
+      0% { opacity: 0; transform: translateY(-30px); }
+      50% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes buttonFadeIn {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* Responsive para móviles */
     @media (max-width: 600px) {
-      video {
-        width: 100%;
-        max-width: 280px;
-      }
-
-      #trailer-container {
-        width: 60%;
-        max-width: 280px;
-        top: 160px;
-        left: 20.5%;
-        transform: translateX(-50%);
-      }
-
       .button {
         font-size: 1rem;
         padding: 10px 20px;
@@ -253,32 +167,24 @@
         font-size: 2rem;
       }
 
-      p {
+      p, #countdown {
         font-size: 1rem;
       }
     }
-
   </style>
 </head>
-
 <body>
   <header>
     <a href="/" class="logo-text">Bsmp.store</a>
   </header>
 
+
+  
   <main>
     <h2>Merch pronto...</h2>
-    <p>MAYO 2025</p>
-
+    <p>JUNIO 2025</p>
+    <div id="countdown">Cargando...</div>
     <a href="https://www.twitch.tv/itsbrauu" class="button" target="_blank">Mi Twitch</a>
-
-    <!-- Video encima de "Merch pronto" -->
-    <div id="trailer-container">
-      <video id="trailerVideo" autoplay playsinline muted>
-        <source src="click.mp4" type="video/mp4" />
-        Tu navegador no soporta el video.
-      </video>
-    </div>
   </main>
 
   <footer>
@@ -286,32 +192,35 @@
       <a href="/">Inicio</a>
     </div>
     <div>&copy; 2025 BSMP</div>
-    <button id="toggleBtn" onclick="toggleTrailer()">Ver trailer</button>
   </footer>
 
   <script>
-    let abierto = false;
+    // Fecha objetivo: 31 mayo 2025 a las 00:00:00 UTC
+    const targetDate = new Date(Date.UTC(2025, 5, 30, 0, 0, 0)); // Mes es 0-indexed (4 = mayo)
 
-    function toggleTrailer() {
-      const trailerContainer = document.getElementById("trailer-container");
-      const trailerVideo = document.getElementById("trailerVideo");
-      const toggleBtn = document.getElementById("toggleBtn");
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
 
-      if (!abierto) {
-        trailerContainer.style.display = "block";
-        trailerVideo.currentTime = 0;
-        trailerVideo.play();
-        toggleBtn.textContent = "Cerrar trailer";
-        trailerContainer.scrollIntoView({ behavior: "smooth" });
-      } else {
-        trailerVideo.pause();
-        trailerContainer.style.display = "none";
-        toggleBtn.textContent = "Ver trailer";
+      if (diff <= 0) {
+        document.getElementById("countdown").textContent = "¡EN BREVE ESTARA DISPONIBLE!";
+        return;
       }
 
-      abierto = !abierto;
-    }
-  </script>
-</body>
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
 
+      document.getElementById("countdown").textContent =
+        `Faltan: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
+
+
+</body>
 </html>
