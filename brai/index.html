@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BSMP TIENDA BRAI</title>
+  <title>BSMP TIENDA</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
   <style>
     @font-face {
@@ -170,19 +170,41 @@
   </div>
 
   <script>
-    function reproducirVoz(texto) {
-      if (!('speechSynthesis' in window)) return;
-      const utterance = new SpeechSynthesisUtterance(texto);
-      utterance.lang = 'es-ES';
-      utterance.pitch = 0.4;
-      utterance.rate = 0.85;
-      utterance.volume = 1;
-      const voces = speechSynthesis.getVoices();
-      const vozMisteriosa = voces.find(v => v.lang.startsWith("es") && v.name.toLowerCase().includes("male")) ||
-                            voces.find(v => v.lang.startsWith("es"));
-      if (vozMisteriosa) utterance.voice = vozMisteriosa;
-      speechSynthesis.speak(utterance);
-    }
+  function esDispositivoMovil() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+function reproducirVoz(texto) {
+  if (!('speechSynthesis' in window)) return;
+
+  if (esDispositivoMovil()) {
+    // No reproducir voz en móviles
+    console.log("Voz desactivada en móvil");
+    return;
+  }
+
+  const utterance = new SpeechSynthesisUtterance(texto);
+  utterance.lang = 'es-ES';
+  utterance.pitch = 0.8;
+  utterance.rate = 0.9;
+  utterance.volume = 1;
+
+  const voces = speechSynthesis.getVoices();
+
+  let vozMisteriosa = voces.find(v => v.lang.startsWith("es") && /male|hombre|masculino/i.test(v.name));
+  if (!vozMisteriosa) {
+    vozMisteriosa = voces.find(v => v.lang.startsWith("es") && v.name.toLowerCase().includes("google"));
+  }
+  if (!vozMisteriosa) {
+    vozMisteriosa = voces.find(v => v.lang.startsWith("es"));
+  }
+  if (vozMisteriosa) {
+    utterance.voice = vozMisteriosa;
+  }
+  
+  speechSynthesis.speak(utterance);
+}
+
 
 
     const respuestas = [
